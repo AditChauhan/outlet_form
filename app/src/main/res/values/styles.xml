@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="text12_reg_all_caps" >
+        <item name="android:textSize">12dp</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0.2</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
 </resources>

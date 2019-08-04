@@ -11,23 +11,30 @@
 
     </data>
 
-    <android.support.constraint.ConstraintLayout
+
+
+    <FrameLayout
+            android:id="@+id/fragment_back_stack_frame_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".MainActivity">
+            android:layout_height="match_parent" />
 
-        <ProgressBar
-                android:visibility="@{state==UiState.Loading ? View.VISIBLE : View.GONE}"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
+    <!--<android.support.constraint.ConstraintLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--tools:context=".MainActivity">-->
 
-        <android.support.v7.widget.RecyclerView
-                android:id="@+id/list"
-                android:visibility="@{state==UiState.Data ? View.VISIBLE : View.GONE}"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+        <!--<ProgressBar-->
+                <!--android:visibility="@{state==UiState.Loading ? View.VISIBLE : View.GONE}"-->
+                <!--android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+                <!--app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"-->
+                <!--android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>-->
 
-    </android.support.constraint.ConstraintLayout>
+        <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:id="@+id/list"-->
+                <!--android:visibility="@{state==UiState.Data ? View.VISIBLE : View.GONE}"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"/>-->
+
+    <!--</android.support.constraint.ConstraintLayout>-->
 </layout>

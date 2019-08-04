@@ -4,7 +4,6 @@ import android.databinding.ViewDataBinding
 import android.graphics.Color
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DialogTitle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.TextUtils
@@ -23,15 +22,17 @@ abstract class Element(val field: Field, @LayoutRes open val layoutId: Int) {
         field.title
     )
 
-    abstract fun updateBinding(binding: ViewDataBinding)
+    abstract fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel, pos: Int)
 
 }
 
 
 class TextElement(field: Field) : Element(field, R.layout.element_text) {
-    override fun updateBinding(binding: ViewDataBinding) {
+    override fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel,pos: Int) {
         binding as ElementTextBinding
         binding.element = this
+        binding.viewModel = viewModel
+        binding.position = pos
     }
 }
 
@@ -41,8 +42,10 @@ class HeadingElement(val heading: CharSequence) : Element(Field(heading, false, 
         Toast.makeText(activity, heading, Toast.LENGTH_LONG).show()
     }
 
-    override fun updateBinding(binding: ViewDataBinding) {
+    override fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel,pos: Int) {
         binding as ElementHeadingBinding
         binding.element = this
+        binding.viewModel = viewModel
+        binding.position = pos
     }
 }

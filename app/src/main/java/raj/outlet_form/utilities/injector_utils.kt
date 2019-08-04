@@ -1,7 +1,6 @@
 package raj.outlet_form.utilities
 
 import raj.outlet_form.data.LocalDatabase
-import raj.outlet_form.data.QuoteRepository
 
 object InjectorUtils {
 
