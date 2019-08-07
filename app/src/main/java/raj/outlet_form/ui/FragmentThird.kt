@@ -18,7 +18,7 @@ import raj.outlet_form.utilities.InjectorUtils
 import raj.outlet_form.utilities.UserClickCallbacks
 
 
-class Fragmentfirst : Fragment(), UserClickCallbacks
+class FragmentThird : Fragment() , UserClickCallbacks
 {
     override fun onUserClick(view: String) {
 
@@ -40,19 +40,14 @@ class Fragmentfirst : Fragment(), UserClickCallbacks
     @Nullable
     override fun onCreateView(inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
         //val retView = inflater.inflate(raj.outlet_form.R.layout.fragment_first, container, false)
+        Log.d("method second ----------------------", " ====================")
+
         binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, raj.outlet_form.R.layout.fragment_first, container, false) as FragmentFirstBinding
         binding.state = UiState.Loading
         getList()
         adapter?.update(list)
-
-//
-
-
-
         binding.buttonFrame.setOnClickListener{
-
             getNextPage()
-
         }
 
 
@@ -67,54 +62,35 @@ class Fragmentfirst : Fragment(), UserClickCallbacks
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
     }
 
     fun getList()
     {
-
         adapter = AdapterRecyclerViewImpl(viewModel,this)
-        list = viewModel.getAllWords(1).value!!
-
-
+        list = viewModel.getAllWords(3).value!!
         val layoutManager = LinearLayoutManager(activity)
         binding.list.adapter = adapter
         binding.list.layoutManager = layoutManager
         binding.state = UiState.Data
-
     }
 
 
 
     fun getNextPage()
     {
-
-
         val fragmentTransaction = fragmentManager?.beginTransaction()
-
-        var fragmentTwo = FragmentUtil.getFragmentByTagName(fragmentManager, "second")
-
-        // Because fragment two has been popup from the back stack, so it must be null.
-        if (fragmentTwo == null) {
-            fragmentTwo = FragmentSecond()
-
-
+        var fragmentfirst = FragmentUtil.getFragmentByTagName(fragmentManager, "first")
+        if (fragmentfirst == null) {
+            fragmentfirst = Fragmentfirst()
         }
-        // Replace fragment one with fragment two, the second fragment tag name is "Fragment Two".
-        // This action will remove Fragment one and add Fragment two.
-        fragmentTransaction?.replace(raj.outlet_form.R.id.fragment_back_stack_frame_layout, fragmentTwo, "second")
-
-        // Add fragment one in back stack.So it will not be destroyed. Press back menu can pop it up from the stack.
+        fragmentTransaction?.replace(raj.outlet_form.R.id.fragment_back_stack_frame_layout, fragmentfirst, "first")
         fragmentTransaction?.addToBackStack(null)
-
         fragmentTransaction?.commit()
-
         FragmentUtil.printActivityFragmentList(fragmentManager)
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d("method invock", ": onResume")
 
     }
 }

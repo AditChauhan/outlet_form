@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+                name="position"
+                type="java.lang.Integer" />
+
+        <variable name="itemName" type="java.lang.String"/>
+        <variable name="viewName" type="java.lang.String"/>
+        <variable name="viewModel" type="raj.outlet_form.ui.MainViewModel"/>
+
+
+    </data>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlParentView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:paddingStart="18dp"
+            android:orientation="vertical"
+            app:layout_behavior="@string/bottom_sheet_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+        <raj.outlet_form.utilities.TruenoLight
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:textSize="16dp"
+                android:textColor="#000000"
+                android:layout_height="40dp"
+
+                android:text="@{itemName}"/>
+        <View
+                android:id="@+id/viewColour"
+                android:layout_width="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_height="1dp"
+                android:background="@color/color_f5f5f5">
+
+        </View>
+
+
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>
+</layout>

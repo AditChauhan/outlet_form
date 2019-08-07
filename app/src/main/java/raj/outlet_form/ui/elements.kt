@@ -11,6 +11,7 @@ import android.text.style.ForegroundColorSpan
 import android.widget.Toast
 import raj.outlet_form.R
 import raj.outlet_form.data.Field
+import raj.outlet_form.databinding.ElementDropdownBinding
 import raj.outlet_form.databinding.ElementHeadingBinding
 import raj.outlet_form.databinding.ElementTextBinding
 
@@ -22,7 +23,7 @@ abstract class Element(val field: Field, @LayoutRes open val layoutId: Int) {
         field.title
     )
 
-    abstract fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel, pos: Int)
+    abstract fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel, pos: Int )
 
 }
 
@@ -30,6 +31,18 @@ abstract class Element(val field: Field, @LayoutRes open val layoutId: Int) {
 class TextElement(field: Field) : Element(field, R.layout.element_text) {
     override fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel,pos: Int) {
         binding as ElementTextBinding
+        binding.element = this
+        binding.viewModel = viewModel
+        binding.position = pos
+
+
+    }
+}
+
+
+ class EditDropElement(field: Field) : Element(field, R.layout.element_dropdown) {
+    override fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel,pos: Int) {
+        binding as ElementDropdownBinding
         binding.element = this
         binding.viewModel = viewModel
         binding.position = pos

@@ -14,25 +14,21 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private var adapter: AdapterRecyclerViewImpl? = null
       var selected = MutableLiveData<Element>()
       val outletList = HashMap<String,String>()
-    var elementNode = MutableLiveData<Element>()
-    var elementText = MutableLiveData<String>()
+      val outletSecondScreen = HashMap<Int,String>()
+      var elementNode = MutableLiveData<Element>()
+      var elementText = MutableLiveData<String>()
+      var bottomList = MutableLiveData<String>()
 
 
 
     internal var elemnetList: MutableLiveData<List<Element>>
 
-
     init {
-        Log.d("adit init", "init" )
-
-
-        adapter = AdapterRecyclerViewImpl(this)
         elementRepository = ElementRepository(application)
         elemnetList = elementRepository.getElementList1()
     }
 
     fun getAllWords(screen: Int): LiveData<List<Element>> {
-        Log.d("adit getAllWords", ""+ elemnetList)
         if(screen == 1)
         {
             elemnetList = elementRepository.getElementList1()
@@ -40,42 +36,46 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         else if(screen == 2)
         {
             elemnetList = elementRepository.getElementList2()
+        }
+        else if(screen == 3)
+        {
+            elemnetList = elementRepository.getElementList3()
 
         }
-
         return elemnetList
     }
 
-    fun getAdapter() : AdapterRecyclerViewImpl?
+
+    fun getBottomList(tag: String): LiveData<List<String>>
     {
-        return this!!.adapter
+        return elementRepository.getBottomList(toString())
     }
+
+
+    fun setDropDownValue(value:String,viewname:String)
+    {
+        Log.d("method invoke", ": setDropDownValue")
+
+        outletList.put(viewname,value)
+    }
+
 
     fun onTextChanged(pos : Int , value : Editable, nameTag: CharSequence) {
         elementText.value = value.toString()
         var tag = nameTag
-
-        Log.d("adit onTextChanged ", ""+ tag)
-        Log.d("adit onTextChanged", ""+ value.toString())
-
         outletList.put(tag.toString(), value.toString())
-        Log.d("adit onTextChanged size of list", ""+ outletList.size)
-
     }
 
     fun getText(value : CharSequence): String? {
-        Log.d("adit getText", ""+ value)
-
-        Log.d("adit  getText size of list", ""+ outletList.size)
-
             return outletList.get(value.toString())
     }
 
     fun onItemClick(index: Int?) {
-        Log.d("adit", ""+ index)
         val db = getElementAtIndex(index)
         selected.value= db
     }
+
+
 
 
     fun getElementAtIndex(index: Int?): Element? {
@@ -85,6 +85,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             elemnetList.value?.elementAt(index)
         } else null
     }
+
+
+    fun checkonclick() {
+        Log.d("method checkonclick", ": checkonclick")
+
+    }
+
+
+
 
 
 

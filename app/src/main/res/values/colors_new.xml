@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--revampuI-->
+
+
+    <color name="color_f5f5f5">#f5f5f5</color>
+    <color name="color_1b5682">#1b5682</color>
+    <color name="color_0097cd">#0097cd</color>
+    <color name="color_DE000000">#DE000000</color>
+    <color name="color_b7b7b7">#b7b7b7</color>
+    <color name="color_e5f8ff">#e5f8ff</color>
+    <color name ="color_99000000">#99000000</color>
+    <color name ="color_daf5ff">#daf5ff</color>
+    <color name="secondaryText">#727272</color>
+    <color name="color_b1b1b1">#b1b1b1</color>
+    <color name="color_80000000">#80000000</color>
+
+    <!--metro color-->
+    <color name="color_metro_dark_green">#307146</color>
+    <color name="color_metro_magenta">#ec4497</color>
+    <color name="color_metro_purple">#a13997</color>
+    <color name="color_metro_cyan">#49acaa</color>
+    <color name="color_metro_yellow">#f9c446</color>
+    <color name="color_metro_orange">#da5330</color>
+    <color name="color_metro_red">#ed3833</color>
+    <color name="color_metro_dark_blue">#2b5797</color>
+    <color name="color_metro_light_blue">#2d89ef</color>
+
+
+
+    <!--primary color pallete -->
+    <color name="color_primary_fa_blue">#0097cd</color>
+    <color name="color_primary_dark">#005486</color>
+    <color name="color_primary_light">#e5f8ff</color>
+
+    <!--secondary color pallete-->
+
+    <color name="color_secondary_fa_grey">#5b666e</color>
+    <color name="color_secondary_dark">#282b2d</color>
+    <color name="color_secondary_light">#eeeeee</color>
+
+
+    <!--background color pallete-->
+
+    <color name="color_background_light">#eeeeee</color>
+    <color name="color_background_dark">#f5f5f5</color>
+
+
+    <!--black color pallete-->
+    <color name="color_black_high">#DE000000</color>
+    <color name="color_black_medium">#99000000</color>
+    <color name="color_black_low">#4D000000</color>
+
+
+    <!--white color pallete-->
+
+
+    <color name="color_white_high">#ffffff</color>
+    <color name="color_white_medium">#4D000000</color>
+    <color name="color_white_low">#4D000000</color>
+
+
+
+
+
+
+
+
+
+
+
+</resources>
+
+
+

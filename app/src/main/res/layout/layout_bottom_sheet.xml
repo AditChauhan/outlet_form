@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout >
+    <data>
+        <variable
+                name="position"
+                type="java.lang.Integer" />
+        <variable name="element" type="raj.outlet_form.ui.TextElement"/>
+        <variable name="viewModel" type="raj.outlet_form.ui.MainViewModel"/>
+
+    </data>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:id="@+id/topHeader"
+    android:weightSum="1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <raj.outlet_form.utilities.TruenoLight
+        android:id="@+id/FloatingLabel"
+        android:gravity="left"
+        android:textColor="@color/color_primary_fa_blue"
+        android:layout_weight="0.5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_margin="14dp"
+        />
+    <raj.outlet_form.utilities.TruenoLight
+        android:id="@+id/text"
+        android:layout_weight="0.5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp"
+        android:gravity="right"
+        android:text="" />
+</LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/sheetlist"
+        android:layout_below="@id/topHeader"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp" />
+</RelativeLayout>
+</layout>

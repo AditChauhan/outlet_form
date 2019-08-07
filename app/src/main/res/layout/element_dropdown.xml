@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+                name="position"
+                type="java.lang.Integer" />
+
+        <variable name="element" type="raj.outlet_form.ui.EditDropElement"/>
+        <variable name="viewModel" type="raj.outlet_form.ui.MainViewModel"/>
+        <variable
+                name="clickHandler"
+                type="raj.outlet_form.utilities.OnClickHandlerInterface" />
+
+
+    </data>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="wrap_content"
+                                             xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.design.widget.TextInputLayout
+            android:id="@+id/channel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@{element.title}"
+            bind:errorEnabled="true"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintTop_toTopOf="parent" bind:layout_constraintVertical_bias="0.050000012"
+            bind:layout_constraintStart_toStartOf="parent" bind:layout_constraintEnd_toEndOf="parent"
+    >
+
+        <raj.outlet_form.utilities.EdittextTruenoLight
+                android:id="@+id/channeledit"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:tag="@{element.title}"
+                style="@style/text16_regular"
+                android:clickable="true"
+                android:onClick="@{(v)-> clickHandler.onClick(v)}"
+                android:text="@{viewModel.getText(element.title)}"
+                android:focusable="false"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords"
+                android:drawableRight="@drawable/arrow_down_24px"
+                android:maxLength="50"
+                android:maxLines="1"
+                android:textSize="@dimen/text_normal"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+</android.support.constraint.ConstraintLayout>
+</layout>

@@ -2,6 +2,7 @@ package raj.outlet_form.data
 
 import android.app.Application
 import android.arch.lifecycle.MutableLiveData
+import raj.outlet_form.ui.EditDropElement
 import raj.outlet_form.ui.Element
 import raj.outlet_form.ui.HeadingElement
 import raj.outlet_form.ui.TextElement
@@ -12,6 +13,23 @@ class ElementRepository(application: Application)
 
     private val list1 = MutableLiveData<List<Element>>()
     private val list2 = MutableLiveData<List<Element>>()
+    private val list3 = MutableLiveData<List<Element>>()
+        val confirmation_list: MutableList<Element> = ArrayList()
+
+        val items = MutableLiveData<List<String>>()
+
+
+        fun getBottomList(name : String) :  MutableLiveData<List<String>>{
+
+            val temp_list: MutableList<String> = ArrayList()
+            temp_list.add("Item 1")
+            temp_list.add("Item 2")
+            temp_list.add("Item 3")
+           temp_list.add("Item 4")
+           temp_list.add("Item 5")
+            items.value = temp_list
+            return items ;
+        }
 
         init {
             addElement()
@@ -28,15 +46,28 @@ class ElementRepository(application: Application)
             return  list2
         }
 
+
+        fun getElementList3() : MutableLiveData<List<Element>>
+        {
+            list3.value = confirmation_list
+            return   list3
+        }
+
 ///////// DATA WILL BE FETCHED FROM THE SERVER BELOW IS THE DUMMY DATA TO CHECK THE ARCHITECTURE//////////
+
+
+
+
+
+
 
         fun addElement2()
         {
             val headingElement = HeadingElement("SHOP PROFILE")
-            val textElement = TextElement(Field("Channel", true, null))
-            val textElement1 = TextElement(Field("Shop Type", true, null))
-            val textElement2 = TextElement(Field("Segmentation ", true, null))
-            val textElement3 = TextElement(Field("Distributor ", true, null))
+            val textElement =  EditDropElement(Field("Channel", true, null))
+            val textElement1 = EditDropElement(Field("Shop Type", true, null))
+            val textElement2 = EditDropElement(Field("Segmentation ", true, null))
+            val textElement3 = EditDropElement(Field("Distributor ", true, null))
 
             val temp_list1: MutableList<Element> = ArrayList()
             temp_list1.add(headingElement)
@@ -44,6 +75,7 @@ class ElementRepository(application: Application)
             temp_list1.add(textElement1)
             temp_list1.add(textElement2)
             temp_list1.add(textElement3)
+            confirmation_list.addAll(temp_list1)
             list2.value = temp_list1
         }
 
@@ -89,6 +121,7 @@ class ElementRepository(application: Application)
          temp_list.add(textElement9 )
          temp_list.add(textElement10)
          temp_list.add(textElement11)
+         confirmation_list.addAll(temp_list)
 
          list1.value = temp_list
      }
