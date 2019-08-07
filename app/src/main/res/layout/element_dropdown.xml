@@ -3,21 +3,22 @@
 
     <data>
         <variable
-                name="position"
-                type="java.lang.Integer" />
+                name="position" type="java.lang.Integer" />
 
-        <variable name="element" type="raj.outlet_form.ui.EditDropElement"/>
-        <variable name="viewModel" type="raj.outlet_form.ui.MainViewModel"/>
         <variable
-                name="clickHandler"
-                type="raj.outlet_form.utilities.OnClickHandlerInterface" />
+                name="element" type="raj.outlet_form.ui.EditDropElement"/>
+        <variable
+                name="viewModel" type="raj.outlet_form.ui.MainViewModel"/>
+        <variable
+                name="clickHandler" type="raj.outlet_form.utilities.UserClickCallbacks" />
 
 
     </data>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="wrap_content"
-                                             xmlns:bind="http://schemas.android.com/apk/res-auto">
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:bind="http://schemas.android.com/apk/res-auto">
 
 
     <android.support.design.widget.TextInputLayout
@@ -25,6 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@{element.title}"
+            android:tag="TextInputLayout"
+
             bind:errorEnabled="true"
             bind:layout_constraintBottom_toBottomOf="parent"
             bind:layout_constraintTop_toTopOf="parent" bind:layout_constraintVertical_bias="0.050000012"
@@ -38,7 +41,7 @@
                 android:tag="@{element.title}"
                 style="@style/text16_regular"
                 android:clickable="true"
-                android:onClick="@{(v)-> clickHandler.onClick(v)}"
+                android:onClick="@{()-> clickHandler.onUserClick(element.title)}"
                 android:text="@{viewModel.getText(element.title)}"
                 android:focusable="false"
                 android:imeOptions="actionNext"

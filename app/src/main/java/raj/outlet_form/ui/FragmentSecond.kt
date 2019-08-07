@@ -16,14 +16,14 @@ import android.view.View
 import android.view.ViewGroup
 import raj.outlet_form.databinding.FragmentSecondBinding
 import raj.outlet_form.databinding.LayoutBottomSheetBinding
-import raj.outlet_form.utilities.*
+import raj.outlet_form.utilities.BottomClickCallbacks
+import raj.outlet_form.utilities.FragmentUtil
+import raj.outlet_form.utilities.InjectorUtils
+import raj.outlet_form.utilities.UserClickCallbacks
 
 
-class FragmentSecond : Fragment(),UserClickCallbacks, BottomClickCallbacks, OnClickHandlerInterface
+class FragmentSecond : Fragment(),UserClickCallbacks, BottomClickCallbacks
 {
-    override fun onClick(view: View) {
-
-    }
 
     override fun onBottomItemClick(view: String, value: String) {
         Log.d("method onBottomItemClick", " :: "+ view+ " :: "+ value)
@@ -34,9 +34,9 @@ class FragmentSecond : Fragment(),UserClickCallbacks, BottomClickCallbacks, OnCl
     }
 
 
-    override fun onUserClick(viewtitle :String) {
-        getBottomlist(viewtitle)
-        showBottomSheet(viewtitle)
+    override fun onUserClick(viewtitle :CharSequence) {
+        getBottomlist(viewtitle.toString())
+        showBottomSheet(viewtitle.toString())
     }
 
     internal lateinit var bottomSheetBehavior: BottomSheetBehavior<*>

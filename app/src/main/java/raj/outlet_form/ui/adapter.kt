@@ -49,7 +49,8 @@ class AdapterRecyclerViewImpl(val viewModel: MainViewModel,userClickCallbacks: U
     }
 
     override fun updateBinding(binding: ViewDataBinding, pos: Int) {
-        list[pos].updateBinding(binding,viewModels,pos)
+        list[pos].updateBinding(binding,viewModels,pos,clickCallbacks)
+        Log.d("updateBinding", "::: " + (binding.root).tag )
        if (list[pos] is EditDropElement)
        {binding.root. setOnClickListener {
            Log.d("binding root", ":clicked ")

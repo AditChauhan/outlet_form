@@ -20,9 +20,10 @@ import raj.outlet_form.utilities.UserClickCallbacks
 
 class FragmentThird : Fragment() , UserClickCallbacks
 {
-    override fun onUserClick(view: String) {
-
+    override fun onUserClick(view: CharSequence) {
     }
+
+
 
     private lateinit var binding: FragmentFirstBinding
     private lateinit var viewModel: MainViewModel

@@ -14,6 +14,7 @@ import raj.outlet_form.data.Field
 import raj.outlet_form.databinding.ElementDropdownBinding
 import raj.outlet_form.databinding.ElementHeadingBinding
 import raj.outlet_form.databinding.ElementTextBinding
+import raj.outlet_form.utilities.UserClickCallbacks
 
 abstract class Element(val field: Field, @LayoutRes open val layoutId: Int) {
     var title: CharSequence = TextUtils.concat(
@@ -23,13 +24,13 @@ abstract class Element(val field: Field, @LayoutRes open val layoutId: Int) {
         field.title
     )
 
-    abstract fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel, pos: Int )
+    abstract fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel, pos: Int,userClickCallbacks: UserClickCallbacks )
 
 }
 
 
 class TextElement(field: Field) : Element(field, R.layout.element_text) {
-    override fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel,pos: Int) {
+    override fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel,pos: Int,userClickCallbacks: UserClickCallbacks ) {
         binding as ElementTextBinding
         binding.element = this
         binding.viewModel = viewModel
@@ -41,11 +42,12 @@ class TextElement(field: Field) : Element(field, R.layout.element_text) {
 
 
  class EditDropElement(field: Field) : Element(field, R.layout.element_dropdown) {
-    override fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel,pos: Int) {
+    override fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel,pos: Int,userClickCallbacks: UserClickCallbacks) {
         binding as ElementDropdownBinding
         binding.element = this
         binding.viewModel = viewModel
         binding.position = pos
+        binding.clickHandler = userClickCallbacks
     }
 }
 
@@ -55,7 +57,7 @@ class HeadingElement(val heading: CharSequence) : Element(Field(heading, false, 
         Toast.makeText(activity, heading, Toast.LENGTH_LONG).show()
     }
 
-    override fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel,pos: Int) {
+    override fun updateBinding(binding: ViewDataBinding,viewModel: MainViewModel,pos: Int,userClickCallbacks: UserClickCallbacks ) {
         binding as ElementHeadingBinding
         binding.element = this
         binding.viewModel = viewModel
